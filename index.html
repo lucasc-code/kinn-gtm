@@ -1,0 +1,1699 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The KINN — Go To Market Sprint Studio | Venice, CA</title>
+    <meta name="description" content="A high-touch, 7-week in-person program for founders ready to master rapid experimentation and find product-market fit. Limited to 10 founders per cohort.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --sage: #dcdcd0;
+            --sage-dark: #c8c8ba;
+            --sage-light: #e8e8de;
+            --black: #000000;
+            --white: #ffffff;
+            --orange: #df6d27;
+            --orange-soft: rgba(223, 109, 39, 0.12);
+            --green: #3b5444;
+            --green-dark: #202820;
+            --cream: #f2f1ec;
+            --text-primary: #1a1a1a;
+            --text-secondary: #4a4a42;
+            --text-muted: #7a7a70;
+            --text-on-dark: #e8e8de;
+            --text-on-dark-secondary: #a8a89e;
+            --text-on-dark-muted: #6a6a60;
+            --border-light: rgba(0, 0, 0, 0.08);
+            --border-on-dark: rgba(255, 255, 255, 0.1);
+            --serif: 'Libre Baskerville', Georgia, 'Times New Roman', serif;
+            --sans: 'Jost', -apple-system, sans-serif;
+            --ease: cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        body {
+            font-family: var(--sans);
+            background: var(--sage);
+            color: var(--text-primary);
+            line-height: 1.65;
+            overflow-x: hidden;
+        }
+
+        ::selection { background: var(--orange); color: var(--white); }
+
+        /* ═══════════ SCROLL REVEAL ═══════════ */
+        .rv {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 0.9s var(--ease), transform 0.9s var(--ease);
+        }
+        .rv.vis { opacity: 1; transform: translateY(0); }
+        .rv-d1 { transition-delay: 0.1s; }
+        .rv-d2 { transition-delay: 0.2s; }
+        .rv-d3 { transition-delay: 0.3s; }
+        .rv-d4 { transition-delay: 0.4s; }
+        .rv-d5 { transition-delay: 0.5s; }
+        .rv-d6 { transition-delay: 0.6s; }
+
+        /* ═══════════ NAVIGATION ═══════════ */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 1.4rem 3.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(32, 40, 32, 0.92);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+        }
+        .nav-brand {
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+        .nav-logo {
+            height: 24px;
+            width: auto;
+        }
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 2.8rem;
+            list-style: none;
+        }
+        .nav-links a {
+            color: var(--text-on-dark-secondary);
+            text-decoration: none;
+            font-size: 0.88rem;
+            font-weight: 500;
+            letter-spacing: 0.2px;
+            transition: color 0.3s ease;
+        }
+        .nav-links a:hover { color: var(--text-on-dark); }
+        .nav-cta {
+            border: 1px solid rgba(255, 255, 255, 0.35) !important;
+            color: var(--text-on-dark) !important;
+            padding: 0.55rem 1.8rem;
+            border-radius: 100px;
+            font-weight: 500 !important;
+            font-size: 0.85rem !important;
+            transition: all 0.3s ease !important;
+            background: transparent !important;
+        }
+        .nav-cta:hover {
+            background: var(--white) !important;
+            color: var(--black) !important;
+            border-color: var(--white) !important;
+        }
+        .mob-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+        .mob-toggle span {
+            display: block;
+            width: 22px;
+            height: 1.5px;
+            background: var(--text-on-dark);
+            margin: 5px 0;
+            transition: all 0.3s ease;
+            border-radius: 2px;
+        }
+
+        /* ═══════════ HERO ═══════════ */
+        .hero {
+            min-height: 92vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            padding: 6rem 2rem 5rem;
+            background: #0e1217;
+            overflow: hidden;
+        }
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse at 50% 30%, rgba(223, 109, 39, 0.12) 0%, transparent 60%),
+                url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h60v60H0z' fill='none'/%3E%3Cpath d='M30 0v60M0 30h60' stroke='rgba(255,255,255,0.02)' stroke-width='0.5'/%3E%3C/svg%3E");
+            background-size: cover, 60px 60px;
+            pointer-events: none;
+        }
+        .hero-glow {
+            position: absolute;
+            top: 10%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 900px;
+            height: 600px;
+            background: radial-gradient(ellipse, rgba(223, 109, 39, 0.1) 0%, transparent 70%);
+            pointer-events: none;
+            animation: heroGlow 8s ease-in-out infinite;
+        }
+        @keyframes heroGlow {
+            0%, 100% { opacity: 0.5; transform: translateX(-50%) scale(1); }
+            50% { opacity: 1; transform: translateX(-50%) scale(1.1); }
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 820px;
+        }
+        .hero-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            background: rgba(223, 109, 39, 0.1);
+            border: 1px solid rgba(223, 109, 39, 0.25);
+            border-radius: 100px;
+            padding: 0.5rem 1.4rem;
+            font-family: var(--sans);
+            font-size: 0.72rem;
+            font-weight: 500;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: var(--orange);
+            margin-bottom: 2.5rem;
+        }
+        .hero-tag::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background: var(--orange);
+            border-radius: 50%;
+            animation: pulse 2s ease-in-out infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+        .hero h1 {
+            font-size: clamp(2.8rem, 7vw, 5rem);
+            line-height: 1.1;
+            margin-bottom: 2.2rem;
+            color: var(--text-on-dark);
+        }
+        .hero h1 .serif-italic {
+            font-family: var(--serif);
+            font-weight: 400;
+            font-style: italic;
+        }
+        .hero h1 .sans-bold {
+            font-family: var(--sans);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+        }
+        .hero-sub {
+            font-family: var(--sans);
+            font-size: 1.05rem;
+            font-weight: 500;
+            color: var(--text-on-dark-secondary);
+            max-width: 540px;
+            margin: 0 auto 3.5rem;
+            line-height: 1.8;
+        }
+        .hero-actions {
+            display: flex;
+            justify-content: center;
+            gap: 1.2rem;
+            flex-wrap: wrap;
+            margin-bottom: 5rem;
+        }
+        .btn-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.85rem 2.4rem;
+            border-radius: 100px;
+            text-decoration: none;
+            font-family: var(--sans);
+            font-weight: 500;
+            font-size: 0.9rem;
+            letter-spacing: 0.2px;
+            transition: all 0.4s var(--ease);
+            cursor: pointer;
+            border: 1px solid transparent;
+        }
+        .btn-pill-filled {
+            background: var(--white);
+            color: var(--black);
+            border-color: var(--white);
+        }
+        .btn-pill-filled:hover {
+            background: var(--sage);
+            border-color: var(--sage);
+            transform: translateY(-2px);
+        }
+        .btn-pill-outline {
+            background: transparent;
+            color: var(--text-on-dark-secondary);
+            border-color: rgba(255, 255, 255, 0.25);
+        }
+        .btn-pill-outline:hover {
+            border-color: var(--text-on-dark);
+            color: var(--text-on-dark);
+        }
+        .btn-pill-dark {
+            background: var(--black);
+            color: var(--white);
+            border-color: var(--black);
+        }
+        .btn-pill-dark:hover {
+            background: var(--green-dark);
+            border-color: var(--green-dark);
+            transform: translateY(-2px);
+        }
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 4.5rem;
+        }
+        .hero-stat .val {
+            font-family: var(--sans);
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--text-on-dark);
+            line-height: 1;
+            margin-bottom: 0.4rem;
+        }
+        .hero-stat .lbl {
+            font-family: var(--serif);
+            font-style: italic;
+            font-size: 0.82rem;
+            color: var(--text-on-dark-muted);
+            font-weight: 400;
+        }
+
+        /* ═══════════ SHARED SECTION ═══════════ */
+        .section-inner { max-width: 1100px; margin: 0 auto; }
+        .s-sage { background: var(--sage); color: var(--text-primary); }
+        .s-black { background: var(--black); color: var(--text-on-dark); }
+        .s-green { background: var(--green-dark); color: var(--text-on-dark); }
+        .s-cream { background: var(--cream); color: var(--text-primary); }
+        section { padding: 7rem 3rem; }
+
+        .sec-label {
+            font-family: var(--serif);
+            font-style: italic;
+            font-size: 1rem;
+            color: var(--text-secondary);
+            margin-bottom: 1.2rem;
+            font-weight: 400;
+        }
+        .s-black .sec-label,
+        .s-green .sec-label { color: var(--text-on-dark-secondary); }
+
+        .sec-heading {
+            font-size: clamp(2rem, 4.5vw, 3rem);
+            line-height: 1.15;
+            margin-bottom: 1.2rem;
+        }
+        .sec-heading .serif-italic {
+            font-family: var(--serif);
+            font-weight: 400;
+            font-style: italic;
+        }
+        .sec-heading .sans-bold {
+            font-family: var(--sans);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        .sec-sub {
+            font-size: 1rem;
+            font-weight: 500;
+            line-height: 1.8;
+            max-width: 540px;
+            color: var(--text-secondary);
+        }
+        .s-black .sec-sub,
+        .s-green .sec-sub { color: var(--text-on-dark-secondary); }
+
+        /* ═══════════ MECHANISM / POSITIONING ═══════════ */
+        .prose-section {
+            max-width: 720px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .prose-section p {
+            font-size: 1rem;
+            line-height: 1.85;
+            color: var(--text-secondary);
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+        }
+        .prose-section p:last-child { margin-bottom: 0; }
+        .s-black .prose-section p,
+        .s-green .prose-section p { color: var(--text-on-dark-secondary); }
+        .prose-section p em {
+            font-style: italic;
+            font-family: var(--serif);
+            color: var(--text-primary);
+            font-weight: 400;
+        }
+        .s-black .prose-section p em,
+        .s-green .prose-section p em { color: var(--text-on-dark); }
+        .prose-section .closing-line {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-top: 0.5rem;
+        }
+        .s-black .prose-section .closing-line { color: var(--text-on-dark); }
+        .s-green .prose-section .closing-line { color: var(--text-on-dark); }
+
+        /* ═══════════ PAIN POINTS ═══════════ */
+        .pain-header { text-align: center; margin-bottom: 4rem; }
+        .pain-header .sec-sub { margin: 0 auto; }
+
+        .pain-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .pain-card {
+            background: var(--cream);
+            border-radius: 20px;
+            padding: 2.2rem 2rem;
+            transition: transform 0.4s var(--ease);
+        }
+        .pain-card:hover { transform: translateY(-3px); }
+        .pain-card h3 {
+            font-family: var(--sans);
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+        .pain-card p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            font-weight: 500;
+        }
+
+        /* ═══════════ PROGRAM ═══════════ */
+        .prog-header { margin-bottom: 4rem; }
+        .prog-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.25rem;
+        }
+        .prog-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-on-dark);
+            border-radius: 20px;
+            padding: 2.5rem 2.2rem;
+            transition: all 0.5s var(--ease);
+        }
+        .prog-card:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateY(-3px);
+        }
+        .prog-num {
+            font-family: var(--serif);
+            font-style: italic;
+            font-size: 1.6rem;
+            color: var(--orange);
+            margin-bottom: 1.2rem;
+            display: block;
+        }
+        .prog-card h3 {
+            font-family: var(--sans);
+            font-size: 1.05rem;
+            font-weight: 600;
+            margin-bottom: 0.6rem;
+            color: var(--text-on-dark);
+        }
+        .prog-card p {
+            font-size: 0.9rem;
+            color: var(--text-on-dark-secondary);
+            line-height: 1.7;
+            font-weight: 500;
+        }
+
+        /* ═══════════ CURRICULUM ═══════════ */
+        .curr-header { text-align: center; margin-bottom: 4.5rem; }
+        .curr-header .sec-sub { margin: 0 auto; }
+
+        .timeline {
+            position: relative;
+            max-width: 780px;
+            margin: 0 auto;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 32px;
+            top: 0;
+            bottom: 0;
+            width: 1px;
+            background: rgba(0, 0, 0, 0.12);
+        }
+        .tl-item {
+            position: relative;
+            padding-left: 80px;
+            margin-bottom: 1.5rem;
+        }
+        .tl-marker {
+            position: absolute;
+            left: 14px;
+            top: 1.8rem;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--sans);
+            font-size: 0.55rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            z-index: 2;
+        }
+        .tl-marker.live {
+            background: var(--green-dark);
+            color: var(--text-on-dark);
+        }
+        .tl-marker.sprint {
+            background: var(--cream);
+            border: 1.5px solid var(--green);
+            color: var(--green);
+        }
+        .tl-card {
+            background: var(--cream);
+            border-radius: 16px;
+            padding: 2rem 2.2rem;
+            transition: all 0.4s var(--ease);
+        }
+        .tl-card:hover {
+            box-shadow: 0 8px 30px rgba(0,0,0,0.06);
+            transform: translateY(-2px);
+        }
+        .tl-meta {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 0.5rem;
+        }
+        .tl-week {
+            font-family: var(--sans);
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--green);
+        }
+        .tl-dur {
+            font-family: var(--serif);
+            font-style: italic;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+        .tl-card h3 {
+            font-family: var(--sans);
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.3rem;
+        }
+        .tl-card .tl-tagline {
+            font-family: var(--serif);
+            font-style: italic;
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+        }
+        .tl-card ul {
+            list-style: none;
+            padding: 0;
+        }
+        .tl-card ul li {
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+            line-height: 1.65;
+            padding-left: 1rem;
+            position: relative;
+            margin-bottom: 0.25rem;
+            font-weight: 500;
+        }
+        .tl-card ul li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.6em;
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background: var(--green);
+        }
+
+        .curr-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.25rem;
+            margin-top: 4rem;
+        }
+        .curr-stat-card {
+            background: var(--cream);
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+        }
+        .curr-stat-card .num {
+            font-family: var(--sans);
+            font-size: 2.6rem;
+            font-weight: 700;
+            color: var(--green-dark);
+            line-height: 1;
+            margin-bottom: 0.35rem;
+        }
+        .curr-stat-card .stat-label {
+            font-family: var(--sans);
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.15rem;
+        }
+        .curr-stat-card .stat-detail {
+            font-family: var(--serif);
+            font-style: italic;
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            font-weight: 400;
+        }
+
+        /* ═══════════ INSTRUCTOR ═══════════ */
+        .instructor-card {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 3.5rem;
+            align-items: center;
+        }
+        .instructor-avatar {
+            width: 100%;
+            aspect-ratio: 1;
+            border-radius: 20px;
+            overflow: hidden;
+            background: var(--sage-dark);
+        }
+        .instructor-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .instructor-info .sec-label { margin-bottom: 0.8rem; }
+        .instructor-info h2 {
+            font-family: var(--serif);
+            font-weight: 400;
+            font-style: italic;
+            font-size: 2.4rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+        }
+        .instructor-info p {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.85;
+            font-weight: 500;
+            margin-bottom: 2rem;
+        }
+        .instructor-socials {
+            display: flex;
+            gap: 0.75rem;
+        }
+        .instructor-socials a {
+            width: 42px; height: 42px;
+            border-radius: 50%;
+            border: 1px solid var(--border-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        .instructor-socials a:hover {
+            border-color: var(--black);
+            color: var(--black);
+        }
+        .instructor-socials svg { width: 18px; height: 18px; }
+
+        /* ═══════════ MENTORSHIP ═══════════ */
+        .mentor-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        .mentor-checks {
+            list-style: none;
+            margin-top: 2rem;
+        }
+        .mentor-checks li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+            font-size: 0.92rem;
+            font-weight: 500;
+            color: var(--text-on-dark-secondary);
+            line-height: 1.55;
+        }
+        .mentor-checks li svg {
+            width: 18px; height: 18px;
+            color: var(--orange);
+            flex-shrink: 0;
+            margin-top: 3px;
+        }
+        .mentor-quote-card {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--border-on-dark);
+            border-radius: 20px;
+            padding: 3rem;
+            position: relative;
+        }
+        .mentor-quote-card::before {
+            content: '\201C';
+            font-family: var(--serif);
+            font-size: 5rem;
+            color: var(--orange);
+            opacity: 0.25;
+            position: absolute;
+            top: 0.8rem;
+            left: 1.5rem;
+            line-height: 1;
+        }
+        .mentor-quote {
+            font-family: var(--serif);
+            font-size: 1.15rem;
+            font-style: italic;
+            color: var(--text-on-dark);
+            line-height: 1.75;
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 2;
+        }
+        .mentor-cite { font-style: normal; }
+        .mentor-cite strong {
+            display: block;
+            font-family: var(--sans);
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--text-on-dark);
+            margin-bottom: 0.1rem;
+        }
+        .mentor-cite span {
+            font-family: var(--serif);
+            font-style: italic;
+            font-size: 0.82rem;
+            color: var(--text-on-dark-muted);
+            font-weight: 400;
+        }
+
+        /* ═══════════ FEATURED MENTORS ═══════════ */
+        .mentors-header { text-align: center; margin-bottom: 4rem; }
+        .mentors-header .sec-sub { margin: 0 auto; }
+        .mentors-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .mentor-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-on-dark);
+            border-radius: 20px;
+            padding: 2rem 1.5rem 1.8rem;
+            text-align: center;
+            transition: all 0.5s var(--ease);
+        }
+        .mentor-card:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateY(-3px);
+        }
+        .mentor-card-img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto 1.4rem;
+            background: var(--green);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .mentor-card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .mentor-card-initials {
+            font-family: var(--sans);
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--text-on-dark);
+            letter-spacing: 1px;
+        }
+        .mentor-card h3 {
+            font-family: var(--sans);
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-on-dark);
+            margin-bottom: 0.5rem;
+        }
+        .mentor-card p {
+            font-family: var(--serif);
+            font-style: italic;
+            font-size: 0.82rem;
+            color: var(--text-on-dark-secondary);
+            line-height: 1.55;
+            font-weight: 400;
+        }
+
+        /* ═══════════ INVESTMENT ═══════════ */
+        .invest-header { text-align: center; margin-bottom: 3.5rem; }
+        .invest-header .sec-sub { margin: 0 auto; }
+
+        .invest-card {
+            max-width: 680px;
+            margin: 0 auto 3rem;
+            background: var(--black);
+            border-radius: 24px;
+            padding: 3.5rem;
+            text-align: center;
+            color: var(--text-on-dark);
+        }
+        .invest-checks {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.7rem 2rem;
+            text-align: left;
+            margin-bottom: 2.5rem;
+        }
+        .invest-checks li {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-size: 0.88rem;
+            color: var(--text-on-dark-secondary);
+            font-weight: 500;
+            list-style: none;
+        }
+        .invest-checks li svg {
+            width: 16px; height: 16px;
+            color: var(--orange);
+            flex-shrink: 0;
+        }
+        .invest-note {
+            font-family: var(--serif);
+            font-style: italic;
+            font-size: 0.82rem;
+            color: var(--text-on-dark-muted);
+            margin-top: 1.2rem;
+        }
+        .invest-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.25rem;
+            max-width: 680px;
+            margin: 0 auto;
+        }
+        .invest-stat {
+            background: var(--cream);
+            border-radius: 16px;
+            padding: 1.8rem 1rem;
+            text-align: center;
+        }
+        .invest-stat .big {
+            font-family: var(--sans);
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.2rem;
+        }
+        .invest-stat .sml {
+            font-family: var(--serif);
+            font-style: italic;
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            font-weight: 400;
+        }
+        .invest-stat.highlight .big {
+            color: var(--orange);
+        }
+
+        /* ═══════════ FAQ ═══════════ */
+        .faq-header { text-align: center; margin-bottom: 3.5rem; }
+
+        .faq-list {
+            max-width: 740px;
+            margin: 0 auto;
+        }
+        .faq-item {
+            border-bottom: 1px solid var(--border-light);
+        }
+        .faq-q {
+            width: 100%;
+            background: none;
+            border: none;
+            padding: 1.5rem 0;
+            font-family: var(--sans);
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--text-primary);
+            text-align: left;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            transition: color 0.3s ease;
+        }
+        .faq-q:hover { color: var(--green); }
+        .faq-q svg {
+            width: 16px; height: 16px;
+            color: var(--text-muted);
+            flex-shrink: 0;
+            transition: transform 0.4s var(--ease);
+        }
+        .faq-item.open .faq-q svg { transform: rotate(180deg); }
+        .faq-a {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s var(--ease), padding 0.5s var(--ease);
+        }
+        .faq-item.open .faq-a {
+            max-height: 400px;
+            padding-bottom: 1.5rem;
+        }
+        .faq-a p {
+            font-size: 0.92rem;
+            color: var(--text-secondary);
+            line-height: 1.75;
+            font-weight: 500;
+        }
+        .faq-breakdown {
+            list-style: none;
+            padding: 0;
+        }
+        .faq-breakdown li {
+            font-size: 0.92rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            font-weight: 500;
+            padding-left: 1rem;
+            position: relative;
+            margin-bottom: 0.25rem;
+        }
+        .faq-breakdown li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.6em;
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background: var(--green);
+        }
+
+        /* ═══════════ CTA BAND ═══════════ */
+        .cta-band {
+            background: var(--green-dark);
+            padding: 5rem 3rem;
+            text-align: center;
+        }
+        .cta-band h2 {
+            font-size: clamp(1.8rem, 4vw, 2.6rem);
+            margin-bottom: 1rem;
+            color: var(--text-on-dark);
+        }
+        .cta-band h2 .serif-italic {
+            font-family: var(--serif);
+            font-weight: 400;
+            font-style: italic;
+        }
+        .cta-band h2 .sans-bold {
+            font-family: var(--sans);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        .cta-band p {
+            font-size: 0.95rem;
+            color: var(--text-on-dark-secondary);
+            font-weight: 500;
+            margin-bottom: 2rem;
+            max-width: 460px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.7;
+        }
+
+        /* ═══════════ FOOTER ═══════════ */
+        footer {
+            background: var(--black);
+            padding: 5rem 3rem 2.5rem;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr;
+            gap: 4rem;
+            max-width: 1100px;
+            margin: 0 auto 4rem;
+        }
+        .footer-brand {
+            font-family: var(--sans);
+            font-weight: 700;
+            font-size: 1.1rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--text-on-dark);
+            margin-bottom: 1.2rem;
+        }
+        .footer-desc {
+            font-size: 0.88rem;
+            color: var(--text-on-dark-secondary);
+            line-height: 1.75;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+            max-width: 320px;
+        }
+        .footer-addr {
+            font-family: var(--serif);
+            font-style: italic;
+            font-size: 0.82rem;
+            color: var(--text-on-dark-muted);
+            line-height: 1.6;
+        }
+        .footer-col h4 {
+            font-family: var(--sans);
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: var(--text-on-dark);
+            margin-bottom: 1.2rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+        .footer-col ul { list-style: none; }
+        .footer-col ul li { margin-bottom: 0.7rem; }
+        .footer-col ul a {
+            color: var(--text-on-dark-muted);
+            text-decoration: none;
+            font-size: 0.88rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        .footer-col ul a:hover { color: var(--text-on-dark); }
+        .footer-bottom {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-on-dark);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .footer-copy {
+            font-size: 0.75rem;
+            color: var(--text-on-dark-muted);
+            font-weight: 500;
+        }
+        .footer-legal {
+            display: flex;
+            gap: 1.5rem;
+            list-style: none;
+        }
+        .footer-legal a {
+            color: var(--text-on-dark-muted);
+            text-decoration: none;
+            font-size: 0.75rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        .footer-legal a:hover { color: var(--text-on-dark); }
+
+        /* ═══════════ RESPONSIVE ═══════════ */
+        @media (max-width: 1024px) {
+            .prog-grid { grid-template-columns: repeat(2, 1fr); }
+            .instructor-card { grid-template-columns: 220px 1fr; gap: 2.5rem; }
+            .mentor-layout { grid-template-columns: 1fr; gap: 3rem; }
+            .mentors-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 768px) {
+            nav { padding: 1rem 1.5rem; }
+            .nav-links {
+                display: none;
+                position: fixed;
+                top: 0; left: 0; right: 0; bottom: 0;
+                background: rgba(32, 40, 32, 0.97);
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 2rem;
+                z-index: 999;
+            }
+            .nav-links.open { display: flex; }
+            .nav-links a { font-size: 1.1rem; color: var(--text-on-dark); }
+            .mob-toggle { display: block; z-index: 1001; }
+            .mob-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(4px, 4px); }
+            .mob-toggle.active span:nth-child(2) { opacity: 0; }
+            .mob-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+            section { padding: 4.5rem 1.5rem; }
+            .hero { padding: 5rem 1.5rem 4rem; min-height: 88vh; }
+            .hero h1 { font-size: clamp(2.2rem, 9vw, 3.2rem); }
+            .hero-stats { flex-wrap: wrap; gap: 2rem; }
+            .hero-stat .val { font-size: 1.6rem; }
+            .pain-grid { grid-template-columns: 1fr; }
+            .prog-grid { grid-template-columns: 1fr; }
+            .timeline::before { left: 18px; }
+            .tl-item { padding-left: 56px; }
+            .tl-marker { left: 0; width: 36px; height: 36px; font-size: 0.5rem; }
+            .curr-stats { grid-template-columns: 1fr; }
+            .instructor-card { grid-template-columns: 1fr; gap: 2rem; }
+            .instructor-avatar { max-width: 220px; }
+            .mentor-layout { grid-template-columns: 1fr; }
+            .mentors-grid { grid-template-columns: 1fr 1fr; }
+            .invest-checks { grid-template-columns: 1fr; }
+            .invest-stats { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+            .footer-bottom { flex-direction: column; text-align: center; }
+            .cta-band { padding: 4rem 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAV -->
+    <nav id="navbar">
+        <a class="nav-brand" href="#hero"><img src="kinn-logo-white.png" alt="The KINN" class="nav-logo"></a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#program">Program</a></li>
+            <li><a href="#curriculum">Curriculum</a></li>
+            <li><a href="#mentorship">Mentorship</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="https://b5uaxbogcs2.typeform.com/gtmstudio" class="nav-cta" target="_blank" rel="noopener noreferrer">Apply Now</a></li>
+        </ul>
+        <button class="mob-toggle" id="mobToggle" aria-label="Toggle navigation">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero" id="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-glow"></div>
+        <div class="hero-content">
+            <div class="hero-tag rv">7-Week Intensive Program</div>
+            <h1 class="rv rv-d1"><span class="serif-italic">Go To Market</span><br><span class="sans-bold">SPRINT STUDIO</span></h1>
+            <p class="hero-sub rv rv-d2">A high-touch, in-person program for founders ready to master rapid experimentation and find product-market fit — guided by experienced mentors who've been there.</p>
+            <div class="hero-actions rv rv-d3">
+                <a href="https://b5uaxbogcs2.typeform.com/gtmstudio" class="btn-pill btn-pill-filled" target="_blank" rel="noopener noreferrer">Apply for Spring 2026</a>
+                <a href="#program" class="btn-pill btn-pill-outline">Learn More</a>
+            </div>
+            <div class="hero-stats rv rv-d4">
+                <div class="hero-stat">
+                    <div class="val">7</div>
+                    <div class="lbl">Weeks</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="val">10</div>
+                    <div class="lbl">Founders</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="val">1:1</div>
+                    <div class="lbl">Mentorship</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="val">Venice</div>
+                    <div class="lbl">In person</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PAIN POINTS -->
+    <section class="s-sage" id="reality">
+        <div class="section-inner">
+            <div class="pain-header">
+                <div class="sec-label rv">The Reality</div>
+                <h2 class="sec-heading rv rv-d1"><span class="serif-italic">Most Founders Get Stuck In</span><br><span class="sans-bold">THE SAME TRAPS</span></h2>
+                <p class="sec-sub rv rv-d2">These challenges derail 90% of early-stage founders — and they're exactly what this program is designed to break through.</p>
+            </div>
+            <div class="pain-grid">
+                <div class="pain-card rv">
+                    <h3>Months of Wasted Runway</h3>
+                    <p>Burning cash on unvalidated features or marketing channels that don't convert.</p>
+                </div>
+                <div class="pain-card rv rv-d1">
+                    <h3>Excessive Pivoting</h3>
+                    <p>Every week brings a new direction. Without a systematic approach to validation, you're guessing — and running out of time.</p>
+                </div>
+                <div class="pain-card rv rv-d2">
+                    <h3>No Clear Path to PMF</h3>
+                    <p>You've read books, listened to podcasts, but making it work for your product feels out of reach.</p>
+                </div>
+                <div class="pain-card rv rv-d3">
+                    <h3>Isolation &amp; Uncertainty</h3>
+                    <p>Building alone is brutal. You need honest feedback from operators who've been there.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROGRAM -->
+    <section class="s-black" id="program">
+        <div class="section-inner">
+            <div class="prog-header">
+                <div class="sec-label rv">The Program</div>
+                <h2 class="sec-heading rv rv-d1"><span class="serif-italic">Built for Founders</span><br><span class="sans-bold">WHO SHIP</span></h2>
+                <p class="sec-sub rv rv-d2">It's an intensive, in-person experience for founders ready to move fast.</p>
+            </div>
+            <div class="prog-grid">
+                <div class="prog-card rv">
+                    <span class="prog-num">01</span>
+                    <h3>Rapid Experimentation</h3>
+                    <p>Run 10x more experiments than you're used to. Master the art of quick validation cycles.</p>
+                </div>
+                <div class="prog-card rv rv-d1">
+                    <span class="prog-num">02</span>
+                    <h3>Go-to-Market Clarity</h3>
+                    <p>Develop a crystal-clear GTM strategy tailored to your unique product and market.</p>
+                </div>
+                <div class="prog-card rv rv-d2">
+                    <span class="prog-num">03</span>
+                    <h3>Focused Mentorship</h3>
+                    <p>Weekly 1:1 sessions with mentors who've built and scaled companies. Get personalized guidance on your constraints.</p>
+                </div>
+                <div class="prog-card rv rv-d3">
+                    <span class="prog-num">04</span>
+                    <h3>Founder Community</h3>
+                    <p>Join an intimate cohort of 10 ambitious founders. Build lasting relationships with peers who understand your journey.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CURRICULUM -->
+    <section class="s-sage" id="curriculum">
+        <div class="section-inner">
+            <div class="curr-header">
+                <div class="sec-label rv">The Curriculum</div>
+                <h2 class="sec-heading rv rv-d1"><span class="serif-italic">7 Weeks of</span><br><span class="sans-bold">EXECUTION & GROWTH</span></h2>
+                <p class="sec-sub rv rv-d2">4 live sessions, 3 execution sprints, and optional office hours. Plus 4 curated instructors to support you. A forcing function to gather real market intelligence.</p>
+            </div>
+
+            <div class="timeline">
+                <div class="tl-item rv">
+                    <div class="tl-marker live">Live</div>
+                    <div class="tl-card">
+                        <div class="tl-meta">
+                            <span class="tl-week">Week 1</span>
+                            <span class="tl-dur">2 hours</span>
+                        </div>
+                        <h3>Market Intelligence Sprint Design</h3>
+                        <p class="tl-tagline">Stop guessing. Ask the people who've already done this.</p>
+                        <ul>
+                            <li>Define your ONE 90-day measurable outcome</li>
+                            <li>Build your network outreach map</li>
+                            <li>Craft your outreach message &amp; follow-up templates</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="tl-item rv">
+                    <div class="tl-marker sprint">Sprint</div>
+                    <div class="tl-card">
+                        <div class="tl-meta">
+                            <span class="tl-week">Weeks 1–2</span>
+                            <span class="tl-dur">2 weeks</span>
+                        </div>
+                        <h3>Sprint 1: Market Intelligence</h3>
+                        <p class="tl-tagline">Compress months of 'figuring it out' into 14 days.</p>
+                        <ul>
+                            <li>Focused conversations with prospects, founders, operators</li>
+                            <li>Extract tactics, pitfalls, and contrarian advice</li>
+                            <li>Accountability buddy check-ins</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="tl-item rv">
+                    <div class="tl-marker live">Live</div>
+                    <div class="tl-card">
+                        <div class="tl-meta">
+                            <span class="tl-week">Week 3</span>
+                            <span class="tl-dur">2 hours</span>
+                        </div>
+                        <h3>Synthesis + Design Experiment #1</h3>
+                        <p class="tl-tagline">Turn input into action. Pick two strategies to test.</p>
+                        <ul>
+                            <li>Synthesize Market Intelligence Sprint results</li>
+                            <li>Strategy mapping exercise with cohort</li>
+                            <li>Select TWO GTM experiments to run</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="tl-item rv">
+                    <div class="tl-marker sprint">Sprint</div>
+                    <div class="tl-card">
+                        <div class="tl-meta">
+                            <span class="tl-week">Weeks 3–4</span>
+                            <span class="tl-dur">2 weeks</span>
+                        </div>
+                        <h3>Sprint 2: Execute Experiment #1</h3>
+                        <p class="tl-tagline">Ship, test, and track results.</p>
+                        <ul>
+                            <li>Track activity, response, and conversion metrics</li>
+                            <li>Daily execution with buddy accountability</li>
+                            <li>Gather qualitative insights from real prospects</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="tl-item rv">
+                    <div class="tl-marker live">Live</div>
+                    <div class="tl-card">
+                        <div class="tl-meta">
+                            <span class="tl-week">Week 5</span>
+                            <span class="tl-dur">2 hours</span>
+                        </div>
+                        <h3>Review #1 + Design Experiment #2</h3>
+                        <p class="tl-tagline">Keep what works, drop what doesn't, test a different lever.</p>
+                        <ul>
+                            <li>Present Experiment #1 results and learnings</li>
+                            <li>Design Experiment #2 with new strategy</li>
+                            <li>Refine messaging and positioning</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="tl-item rv">
+                    <div class="tl-marker sprint">Sprint</div>
+                    <div class="tl-card">
+                        <div class="tl-meta">
+                            <span class="tl-week">Weeks 5–6</span>
+                            <span class="tl-dur">2 weeks</span>
+                        </div>
+                        <h3>Sprint 3: Execute Experiment #2</h3>
+                        <p class="tl-tagline">Learn fast, then commit.</p>
+                        <ul>
+                            <li>Run second GTM experiment</li>
+                            <li>Compare results across both strategies</li>
+                            <li>Identify highest-signal approach</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="tl-item rv">
+                    <div class="tl-marker live">Live</div>
+                    <div class="tl-card">
+                        <div class="tl-meta">
+                            <span class="tl-week">Week 7</span>
+                            <span class="tl-dur">2 hours</span>
+                        </div>
+                        <h3>Build Your 90-Day GTM Plan</h3>
+                        <p class="tl-tagline">Turn experiments into an operating plan.</p>
+                        <ul>
+                            <li>Identify your highest-signal strategy</li>
+                            <li>Create 90-day plan with weekly milestones</li>
+                            <li>Develop customer and investor narratives</li>
+                            <li>Define KPIs and personal operating cadence</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="curr-stats">
+                <div class="curr-stat-card rv">
+                    <div class="num">4</div>
+                    <div class="stat-label">Live Sessions</div>
+                    <div class="stat-detail">Every other Monday</div>
+                </div>
+                <div class="curr-stat-card rv rv-d1">
+                    <div class="num">3</div>
+                    <div class="stat-label">Execution Sprints</div>
+                    <div class="stat-detail">Two weeks each</div>
+                </div>
+                <div class="curr-stat-card rv rv-d2">
+                    <div class="num">12</div>
+                    <div class="stat-label">Founders Max</div>
+                    <div class="stat-detail">Buddy system included</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- INSTRUCTOR -->
+    <section class="s-cream" id="instructor">
+        <div class="section-inner">
+            <div class="instructor-card rv">
+                <div class="instructor-avatar"><img src="jeffrey-chernick.jpg" alt="Jeffrey Chernick"></div>
+                <div class="instructor-info">
+                    <div class="sec-label">Your Instructor</div>
+                    <h2>Jeffrey Chernick</h2>
+                    <p>Jeffrey is a serial entrepreneur, author, startup mentor, and angel investor. A former Wall Street wealth manager turned 3x founder, he is an inventor of 21 U.S. Patents, 3x Emory Goizueta Business School Alumni Luminary, a guest lecturer at Pepperdine University's Entrepreneurship MBA Program, and a member of Pepperdine's Social Entrepreneurship and Change Advisory Board. He has advised and invested in startups across sectors including mobility, AI, wellness, and media, CPG, and collaborates with both early-stage founders and institutional VCs. He raised $12M and reached 20M downloads for his last company, Vyng (acquired by Siprocal).</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MENTORSHIP -->
+    <section class="s-green" id="mentorship">
+        <div class="section-inner">
+            <div class="mentor-layout">
+                <div>
+                    <div class="sec-label rv">Mentorship</div>
+                    <h2 class="sec-heading rv rv-d1"><span class="serif-italic">Learn From Founders</span><br><span class="sans-bold">WHO'VE DONE IT</span></h2>
+                    <p class="sec-sub rv rv-d2">Our mentors aren't consultants or academics — they're operators who've built companies from zero to scale. They've made the mistakes so you don't have to.</p>
+                    <ul class="mentor-checks rv rv-d3">
+                        <li>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                            Weekly 60-minute 1:1 sessions with your dedicated mentor
+                        </li>
+                        <li>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                            On-demand access to the mentor network for specialized expertise
+                        </li>
+                        <li>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                            Real-time feedback on experiments and pivots
+                        </li>
+                        <li>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                            Direct introductions to investors, customers, and partners
+                        </li>
+                        <li>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                            Post-program check-ins for 3 months
+                        </li>
+                    </ul>
+                </div>
+                <div class="mentor-quote-card rv rv-d2">
+                    <blockquote class="mentor-quote">When I met Jeffrey, I had a great product with Seoul Juice, but no real understanding of how to raise capital or build an investor process. He completely changed that. Jeffrey helped me structure my fundraises, refine and rebuild my decks, and even connected me with the legal team that supported me through it all. Over the next two years, he was in the trenches with me through multiple raises and ultimately through the sale of my company. He doesn't just give advice, he rolls up his sleeves and builds with you.</blockquote>
+                    <cite class="mentor-cite">
+                        <strong>Luis Manta</strong>
+                        <span>Founder, Seoul Juice (acquired)</span>
+                    </cite>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURED MENTORS -->
+    <section class="s-black" id="mentors">
+        <div class="section-inner">
+            <div class="mentors-header">
+                <div class="sec-label rv">Featured Mentors</div>
+                <h2 class="sec-heading rv rv-d1"><span class="serif-italic">Your</span> <span class="sans-bold">MENTOR NETWORK</span></h2>
+                <p class="sec-sub rv rv-d2">Founders and operators who've built, scaled, and exited — now in your corner.</p>
+            </div>
+            <div class="mentors-grid">
+                <div class="mentor-card rv rv-d1">
+                    <div class="mentor-card-img">
+                        <img src="images/scott-dudelson.jpg" alt="Scott Dudelson">
+                    </div>
+                    <h3>Scott Dudelson</h3>
+                    <p>Founder, Prodege</p>
+                </div>
+                <div class="mentor-card rv rv-d2">
+                    <div class="mentor-card-img">
+                        <img src="images/darren-berkovitz.jpg" alt="Darren Berkovitz">
+                    </div>
+                    <h3>Darren Berkovitz</h3>
+                    <p>Co-Founder, TeleSign — created two-factor authentication, $330M exit</p>
+                </div>
+                <div class="mentor-card rv rv-d3">
+                    <div class="mentor-card-img">
+                        <img src="images/eric-pulier.jpg" alt="Eric Pulier">
+                    </div>
+                    <h3>Eric Pulier</h3>
+                    <p>16x Founder — $1.5B raised across ventures</p>
+                </div>
+                <div class="mentor-card rv rv-d4">
+                    <div class="mentor-card-img">
+                        <img src="images/josh-resnick.jpg" alt="Josh Resnick">
+                    </div>
+                    <h3>Josh Resnick</h3>
+                    <p>Co-Founder, Pandemic Studios ($860M exit) &amp; Sugarfina</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- INVESTMENT -->
+    <section class="s-sage" id="invest">
+        <div class="section-inner">
+            <div class="invest-header">
+                <div class="sec-label rv">Investment</div>
+                <h2 class="sec-heading rv rv-d1"><span class="serif-italic">Ready to Find</span><br><span class="sans-bold">PRODUCT-MARKET FIT?</span></h2>
+                <p class="sec-sub rv rv-d2">This program is for serious founders who are ready to commit. We limit each cohort to 10 founders to ensure personalized attention and meaningful connections.</p>
+            </div>
+
+            <div class="invest-card rv">
+                <ul class="invest-checks">
+                    <li>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                        7 weeks of intensive workshops (in-person)
+                    </li>
+                    <li>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                        Weekly 1:1 mentorship sessions
+                    </li>
+                    <li>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                        Weekly passes to The KINN workspace
+                    </li>
+                    <li>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                        Lifetime community membership
+                    </li>
+                    <li>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                        Post-program support (3 months)
+                    </li>
+                    <li>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                        Curated introductions to investors
+                    </li>
+                </ul>
+                <a href="https://b5uaxbogcs2.typeform.com/gtmstudio" class="btn-pill btn-pill-filled" style="justify-content: center; background: var(--white); color: var(--black); border-color: var(--white);" target="_blank" rel="noopener noreferrer">
+                    Apply Now
+                </a>
+                <p class="invest-note">Applications reviewed on a rolling basis. Limited spots available.</p>
+            </div>
+
+            <div class="invest-stats">
+                <div class="invest-stat rv">
+                    <div class="big">Spring 2026</div>
+                    <div class="sml">Next Cohort</div>
+                </div>
+                <div class="invest-stat rv rv-d1">
+                    <div class="big">Mar 10</div>
+                    <div class="sml">Start Date</div>
+                </div>
+                <div class="invest-stat highlight rv rv-d2">
+                    <div class="big">10 Spots</div>
+                    <div class="sml">Remaining</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="s-cream" id="faq">
+        <div class="section-inner">
+            <div class="faq-header">
+                <div class="sec-label rv">FAQ</div>
+                <h2 class="sec-heading rv rv-d1"><span class="sans-bold">COMMON QUESTIONS</span></h2>
+            </div>
+            <div class="faq-list">
+                <div class="faq-item rv">
+                    <button class="faq-q">
+                        What if I don't have a warm network to activate?
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                    </button>
+                    <div class="faq-a"><p>This program will force you to build one. We'll help you identify who to reach, what to say, and how to move fast. If you're unwilling to activate your network, GTM will be challenging regardless of the program.</p></div>
+                </div>
+                <div class="faq-item rv rv-d1">
+                    <button class="faq-q">
+                        Can I join if I'm still in idea stage?
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                    </button>
+                    <div class="faq-a"><p>Yes, if you have a clear hypothesis about who your customer is and what problem you're solving. Your experiments will focus on validation rather than scaling.</p></div>
+                </div>
+                <div class="faq-item rv rv-d2">
+                    <button class="faq-q">
+                        I'm preparing to fundraise. Will this help me get investor-ready?
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                    </button>
+                    <div class="faq-a"><p>Yes. Many participants use this program to build the traction milestones investors want to see. Your 90-day objective might be "hit $100K MRR" or "prove enterprise viability with 2 Fortune 500 pilots." By the end, you'll have a clear investor narrative backed by real experiments and measurable progress. The final session includes an investor/operator mentor specifically to help you translate your GTM plan into fundraising momentum.</p></div>
+                </div>
+                <div class="faq-item rv rv-d3">
+                    <button class="faq-q">
+                        What if I'm already doing $50K+/month in revenue?
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                    </button>
+                    <div class="faq-a"><p>The program works for scaling too. Your experiments will focus on improving pipeline quality, conversion rates, expansion, launching in new markets, or building the proof points needed for your next round — not just initial customer acquisition.</p></div>
+                </div>
+                <div class="faq-item rv rv-d4">
+                    <button class="faq-q">
+                        How much time per week should I expect to commit?
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                    </button>
+                    <div class="faq-a">
+                        <ul class="faq-breakdown">
+                            <li>Live sessions: 2 hours every other Monday</li>
+                            <li>Execution sprints: 10–15 hours per week (highly variable based on experiment)</li>
+                            <li>Accountability buddy check-ins</li>
+                            <li>Office hours: Optional, as needed</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="faq-item rv rv-d5">
+                    <button class="faq-q">
+                        What if I can't complete 20-50 conversations in Sprint 1?
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                    </button>
+                    <div class="faq-a"><p>That's okay. The target is aspirational. Even 10–15 high-quality conversations will produce valuable patterns. The goal is effort and openness, not hitting an arbitrary number.</p></div>
+                </div>
+                <div class="faq-item rv rv-d6">
+                    <button class="faq-q">
+                        Do I need to be technical to join?
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                    </button>
+                    <div class="faq-a"><p>No. This program is for all types of founders — technical and non-technical, B2B and B2C, product and service businesses.</p></div>
+                </div>
+                <div class="faq-item rv">
+                    <button class="faq-q">
+                        Is this an accelerator?
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                    </button>
+                    <div class="faq-a"><p>No. This is not an accelerator or a course. There's no demo day, no equity taken, no generic curriculum designed for 100 companies at once. The GTM Sprint Studio is a small-room, hands-on experience where 10 founders run live experiments on their own businesses for 7 weeks straight — with weekly mentorship from people who've built companies to $330M, $860M, and $1.5B exits. Think of it as a forcing function: you'll test more go-to-market approaches in 7 weeks than most founders test in a year. And you'll do it surrounded by people who can tell you what's actually working — because they've done it themselves.</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA BAND -->
+    <div class="cta-band">
+        <h2 class="rv"><span class="serif-italic">Ready to</span> <span class="sans-bold">BEGIN?</span></h2>
+        <p class="rv rv-d1">Spring 2026 cohort begins March 10. Applications are reviewed on a rolling basis.</p>
+        <a href="https://b5uaxbogcs2.typeform.com/gtmstudio" class="btn-pill btn-pill-filled rv rv-d2" target="_blank" rel="noopener noreferrer">Apply Now</a>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-grid">
+            <div>
+                <div class="footer-brand">THE KINN</div>
+                <p class="footer-desc">A membership network, accelerator, and collaborative workspace for conscious entrepreneurs in Venice, CA.</p>
+                <p class="footer-addr">516 Pacific Avenue<br>Venice, CA 90291</p>
+            </div>
+            <div class="footer-col">
+                <h4>Program</h4>
+                <ul>
+                    <li><a href="#program">Overview</a></li>
+                    <li><a href="#curriculum">Curriculum</a></li>
+                    <li><a href="#mentorship">Mentorship</a></li>
+                    <li><a href="https://b5uaxbogcs2.typeform.com/gtmstudio" target="_blank" rel="noopener noreferrer">Apply</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Connect</h4>
+                <ul>
+                    <li><a href="https://thekinn.co/">The KINN</a></li>
+                    <li><a href="mailto:hello@thekinn.co">hello@thekinn.co</a></li>
+                    <li><a href="https://www.instagram.com/thekinn.co/">Instagram</a></li>
+                    <li><a href="https://www.linkedin.com/company/thekinn">LinkedIn</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span class="footer-copy">&copy; 2026 The KINN. All rights reserved.</span>
+            <ul class="footer-legal">
+                <li><a href="#">Privacy</a></li>
+                <li><a href="#">Terms</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll reveal
+        const ro = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    e.target.classList.add('vis');
+                    ro.unobserve(e.target);
+                }
+            });
+        }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+        document.querySelectorAll('.rv').forEach(el => ro.observe(el));
+
+        // Mobile menu
+        const mobBtn = document.getElementById('mobToggle');
+        const navMenu = document.getElementById('navLinks');
+        mobBtn.addEventListener('click', () => {
+            mobBtn.classList.toggle('active');
+            navMenu.classList.toggle('open');
+            document.body.style.overflow = navMenu.classList.contains('open') ? 'hidden' : '';
+        });
+        navMenu.querySelectorAll('a').forEach(a => {
+            a.addEventListener('click', () => {
+                mobBtn.classList.remove('active');
+                navMenu.classList.remove('open');
+                document.body.style.overflow = '';
+            });
+        });
+
+        // UTM passthrough to Typeform links
+        (function() {
+            const params = new URLSearchParams(window.location.search);
+            const utmKeys = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'];
+            const utms = {};
+            utmKeys.forEach(key => {
+                if (params.has(key)) utms[key] = params.get(key);
+            });
+            if (Object.keys(utms).length > 0) {
+                const utmString = new URLSearchParams(utms).toString();
+                document.querySelectorAll('a[href*="typeform.com"]').forEach(link => {
+                    const url = new URL(link.href);
+                    Object.entries(utms).forEach(([k, v]) => url.searchParams.set(k, v));
+                    link.href = url.toString();
+                });
+            }
+        })();
+
+        // FAQ accordion
+        document.querySelectorAll('.faq-q').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const item = btn.parentElement;
+                const wasOpen = item.classList.contains('open');
+                document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+                if (!wasOpen) item.classList.add('open');
+            });
+        });
+    </script>
+</body>
+</html>

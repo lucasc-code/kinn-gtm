@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thanks for Booking — The KINN GTM Sprint Studio</title>
+    <meta name="description" content="Your call is confirmed. Here's what to expect next.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --sage: #dcdcd0;
+            --sage-dark: #c8c8ba;
+            --sage-light: #e8e8de;
+            --black: #000000;
+            --white: #ffffff;
+            --orange: #df6d27;
+            --orange-soft: rgba(223, 109, 39, 0.12);
+            --green: #3b5444;
+            --green-dark: #202820;
+            --cream: #f2f1ec;
+            --text-primary: #1a1a1a;
+            --text-secondary: #4a4a42;
+            --text-muted: #7a7a70;
+            --text-on-dark: #e8e8de;
+            --text-on-dark-secondary: #a8a89e;
+            --text-on-dark-muted: #6a6a60;
+            --border-light: rgba(0, 0, 0, 0.08);
+            --border-on-dark: rgba(255, 255, 255, 0.1);
+            --serif: 'Libre Baskerville', Georgia, 'Times New Roman', serif;
+            --sans: 'Jost', -apple-system, sans-serif;
+            --ease: cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        body {
+            font-family: var(--sans);
+            background: #0e1217;
+            color: var(--text-on-dark);
+            line-height: 1.65;
+            overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        ::selection { background: var(--orange); color: var(--white); }
+
+        /* ═══════════ SCROLL REVEAL ═══════════ */
+        .rv {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 0.9s var(--ease), transform 0.9s var(--ease);
+        }
+        .rv.vis { opacity: 1; transform: translateY(0); }
+        .rv-d1 { transition-delay: 0.1s; }
+        .rv-d2 { transition-delay: 0.2s; }
+        .rv-d3 { transition-delay: 0.3s; }
+        .rv-d4 { transition-delay: 0.4s; }
+        .rv-d5 { transition-delay: 0.5s; }
+
+        /* ═══════════ NAVIGATION ═══════════ */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 1.4rem 3.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(32, 40, 32, 0.92);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+        }
+        .nav-brand {
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+        .nav-logo {
+            height: 24px;
+            width: auto;
+        }
+
+        /* ═══════════ THANK YOU HERO ═══════════ */
+        .thank-you {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            padding: 6rem 2rem 5rem;
+            overflow: hidden;
+        }
+
+        .thank-you-bg {
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse at 50% 30%, rgba(223, 109, 39, 0.12) 0%, transparent 60%),
+                url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h60v60H0z' fill='none'/%3E%3Cpath d='M30 0v60M0 30h60' stroke='rgba(255,255,255,0.02)' stroke-width='0.5'/%3E%3C/svg%3E");
+            background-size: cover, 60px 60px;
+            pointer-events: none;
+        }
+
+        .thank-you-glow {
+            position: absolute;
+            top: 10%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 900px;
+            height: 600px;
+            background: radial-gradient(ellipse, rgba(223, 109, 39, 0.1) 0%, transparent 70%);
+            pointer-events: none;
+            animation: heroGlow 8s ease-in-out infinite;
+        }
+
+        @keyframes heroGlow {
+            0%, 100% { opacity: 0.5; transform: translateX(-50%) scale(1); }
+            50% { opacity: 1; transform: translateX(-50%) scale(1.1); }
+        }
+
+        .thank-you-content {
+            position: relative;
+            z-index: 2;
+            max-width: 620px;
+        }
+
+        .check-icon {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            background: var(--orange-soft);
+            border: 1px solid rgba(223, 109, 39, 0.25);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 2.5rem;
+        }
+        .check-icon svg {
+            width: 32px;
+            height: 32px;
+            color: var(--orange);
+        }
+
+        .thank-you h1 {
+            font-size: clamp(2.4rem, 6vw, 4rem);
+            line-height: 1.1;
+            margin-bottom: 1rem;
+            color: var(--text-on-dark);
+        }
+        .thank-you h1 .serif-italic {
+            font-family: var(--serif);
+            font-weight: 400;
+            font-style: italic;
+        }
+        .thank-you h1 .sans-bold {
+            font-family: var(--sans);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+        }
+
+        .confirmed-text {
+            font-family: var(--sans);
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: var(--text-on-dark-secondary);
+            margin-bottom: 3.5rem;
+            line-height: 1.8;
+        }
+
+        /* ═══════════ NEXT STEPS ═══════════ */
+        .next-steps-label {
+            font-family: var(--serif);
+            font-style: italic;
+            font-size: 1rem;
+            color: var(--text-on-dark-secondary);
+            margin-bottom: 2rem;
+            font-weight: 400;
+        }
+
+        .next-steps {
+            list-style: none;
+            text-align: left;
+            max-width: 520px;
+            margin: 0 auto 3.5rem;
+        }
+
+        .next-steps li {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--text-on-dark-secondary);
+            line-height: 1.65;
+        }
+
+        .next-steps li svg {
+            width: 20px;
+            height: 20px;
+            color: var(--orange);
+            flex-shrink: 0;
+            margin-top: 3px;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.85rem 2.4rem;
+            border-radius: 100px;
+            text-decoration: none;
+            font-family: var(--sans);
+            font-weight: 500;
+            font-size: 0.9rem;
+            letter-spacing: 0.2px;
+            transition: all 0.4s var(--ease);
+            cursor: pointer;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            background: transparent;
+            color: var(--text-on-dark-secondary);
+        }
+        .back-link:hover {
+            border-color: var(--text-on-dark);
+            color: var(--text-on-dark);
+        }
+
+        /* ═══════════ FOOTER ═══════════ */
+        footer {
+            background: var(--black);
+            padding: 2.5rem 3rem;
+            border-top: 1px solid var(--border-on-dark);
+        }
+        .footer-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .footer-copy {
+            font-size: 0.75rem;
+            color: var(--text-on-dark-muted);
+            font-weight: 500;
+        }
+        .footer-legal {
+            display: flex;
+            gap: 1.5rem;
+            list-style: none;
+        }
+        .footer-legal a {
+            color: var(--text-on-dark-muted);
+            text-decoration: none;
+            font-size: 0.75rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        .footer-legal a:hover { color: var(--text-on-dark); }
+
+        /* ═══════════ RESPONSIVE ═══════════ */
+        @media (max-width: 768px) {
+            nav { padding: 1rem 1.5rem; }
+            .thank-you { padding: 5rem 1.5rem 4rem; }
+            .thank-you h1 { font-size: clamp(2rem, 9vw, 3rem); }
+            .check-icon { width: 60px; height: 60px; margin-bottom: 2rem; }
+            .check-icon svg { width: 26px; height: 26px; }
+            .next-steps { margin-bottom: 2.5rem; }
+            footer { padding: 2rem 1.5rem; }
+            .footer-inner { flex-direction: column; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAV -->
+    <nav>
+        <a class="nav-brand" href="https://gtm.thekinn.co/"><img src="../kinn-logo-white.png" alt="The KINN" class="nav-logo"></a>
+    </nav>
+
+    <!-- THANK YOU -->
+    <section class="thank-you">
+        <div class="thank-you-bg"></div>
+        <div class="thank-you-glow"></div>
+        <div class="thank-you-content">
+            <div class="check-icon rv">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+            </div>
+            <h1 class="rv rv-d1"><span class="serif-italic">Thanks for</span><br><span class="sans-bold">BOOKING!</span></h1>
+            <p class="confirmed-text rv rv-d2">Your call is confirmed.</p>
+
+            <p class="next-steps-label rv rv-d3">A few next steps...</p>
+            <ul class="next-steps">
+                <li class="rv rv-d3">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                    Make sure you have the call time confirmed on your calendar
+                </li>
+                <li class="rv rv-d4">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+                    On the call, we'll dig into your current startup stage, goals, and go-to-market strategy
+                </li>
+                <li class="rv rv-d5">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                    Please show up on time, and get ready for a fun chat!
+                </li>
+            </ul>
+
+            <a href="https://gtm.thekinn.co/" class="back-link rv rv-d5">Back to GTM Sprint Studio</a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-inner">
+            <span class="footer-copy">&copy; 2026 The KINN. All rights reserved.</span>
+            <ul class="footer-legal">
+                <li><a href="#">Privacy</a></li>
+                <li><a href="#">Terms</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll reveal
+        const ro = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    e.target.classList.add('vis');
+                    ro.unobserve(e.target);
+                }
+            });
+        }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+        document.querySelectorAll('.rv').forEach(el => ro.observe(el));
+    </script>
+</body>
+</html>
