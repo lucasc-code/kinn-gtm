@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Your Interview — The KINN GTM Sprint Studio</title>
+    <meta name="description" content="Application received! Book your interview to complete your application.">
+    <!-- Meta Pixel Code -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '340360602285882');
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=340360602285882&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Meta Pixel Code -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --sage: #dcdcd0;
+            --sage-dark: #c8c8ba;
+            --sage-light: #e8e8de;
+            --black: #000000;
+            --white: #ffffff;
+            --orange: #df6d27;
+            --orange-soft: rgba(223, 109, 39, 0.12);
+            --green: #3b5444;
+            --green-dark: #202820;
+            --cream: #f2f1ec;
+            --text-primary: #1a1a1a;
+            --text-secondary: #4a4a42;
+            --text-muted: #7a7a70;
+            --text-on-dark: #e8e8de;
+            --text-on-dark-secondary: #a8a89e;
+            --text-on-dark-muted: #6a6a60;
+            --border-light: rgba(0, 0, 0, 0.08);
+            --border-on-dark: rgba(255, 255, 255, 0.1);
+            --serif: 'Libre Baskerville', Georgia, 'Times New Roman', serif;
+            --sans: 'Jost', -apple-system, sans-serif;
+            --ease: cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        body {
+            font-family: var(--sans);
+            background: #0e1217;
+            color: var(--text-on-dark);
+            line-height: 1.65;
+            overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        ::selection { background: var(--orange); color: var(--white); }
+
+        /* ═══════════ SCROLL REVEAL ═══════════ */
+        .rv {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 0.9s var(--ease), transform 0.9s var(--ease);
+        }
+        .rv.vis { opacity: 1; transform: translateY(0); }
+        .rv-d1 { transition-delay: 0.1s; }
+        .rv-d2 { transition-delay: 0.2s; }
+        .rv-d3 { transition-delay: 0.3s; }
+
+        /* ═══════════ NAVIGATION ═══════════ */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 1.4rem 3.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(32, 40, 32, 0.92);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+        }
+        .nav-brand {
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+        .nav-logo {
+            height: 24px;
+            width: auto;
+        }
+
+        /* ═══════════ MAIN SECTION ═══════════ */
+        .book-interview {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            padding: 4rem 2rem 3rem;
+            overflow: hidden;
+        }
+
+        .book-interview-bg {
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse at 50% 30%, rgba(223, 109, 39, 0.12) 0%, transparent 60%),
+                url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h60v60H0z' fill='none'/%3E%3Cpath d='M30 0v60M0 30h60' stroke='rgba(255,255,255,0.02)' stroke-width='0.5'/%3E%3C/svg%3E");
+            background-size: cover, 60px 60px;
+            pointer-events: none;
+        }
+
+        .book-interview-glow {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 900px;
+            height: 600px;
+            background: radial-gradient(ellipse, rgba(223, 109, 39, 0.1) 0%, transparent 70%);
+            pointer-events: none;
+            animation: heroGlow 8s ease-in-out infinite;
+        }
+
+        @keyframes heroGlow {
+            0%, 100% { opacity: 0.5; transform: translateX(-50%) scale(1); }
+            50% { opacity: 1; transform: translateX(-50%) scale(1.1); }
+        }
+
+        .book-interview-content {
+            position: relative;
+            z-index: 2;
+            max-width: 720px;
+            width: 100%;
+        }
+
+        .check-icon {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            background: var(--orange-soft);
+            border: 1px solid rgba(223, 109, 39, 0.25);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 2rem;
+        }
+        .check-icon svg {
+            width: 32px;
+            height: 32px;
+            color: var(--orange);
+        }
+
+        .book-interview h1 {
+            font-size: clamp(2rem, 5vw, 3.2rem);
+            line-height: 1.15;
+            margin-bottom: 0.75rem;
+            color: var(--text-on-dark);
+        }
+        .book-interview h1 .serif-italic {
+            font-family: var(--serif);
+            font-weight: 400;
+            font-style: italic;
+        }
+        .book-interview h1 .sans-bold {
+            font-family: var(--sans);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+        }
+
+        .subtitle {
+            font-family: var(--sans);
+            font-size: 1.05rem;
+            font-weight: 500;
+            color: var(--text-on-dark-secondary);
+            margin-bottom: 1rem;
+            line-height: 1.7;
+        }
+
+        /* ═══════════ STEP INDICATOR ═══════════ */
+        .step-indicator {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            background: rgba(223, 109, 39, 0.1);
+            border: 1px solid rgba(223, 109, 39, 0.2);
+            border-radius: 100px;
+            padding: 0.5rem 1.4rem;
+            margin-bottom: 2.5rem;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--orange);
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .step-indicator .step-done {
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: var(--orange);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .step-indicator .step-done svg {
+            width: 10px;
+            height: 10px;
+            color: var(--white);
+        }
+
+        .step-indicator .step-arrow {
+            color: rgba(223, 109, 39, 0.4);
+        }
+
+        .step-indicator .step-current {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        .step-indicator .step-current .dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--orange);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(0.8); }
+        }
+
+        /* ═══════════ CALENDLY EMBED ═══════════ */
+        .calendly-container {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            border-radius: 12px;
+            overflow: hidden;
+            background: #0e1217;
+            border: 1px solid var(--border-on-dark);
+        }
+
+        .calendly-inline-widget {
+            min-width: 320px;
+            height: 750px;
+        }
+
+        /* ═══════════ FOOTER ═══════════ */
+        footer {
+            background: var(--black);
+            padding: 2.5rem 3rem;
+            border-top: 1px solid var(--border-on-dark);
+        }
+        .footer-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .footer-copy {
+            font-size: 0.75rem;
+            color: var(--text-on-dark-muted);
+            font-weight: 500;
+        }
+        .footer-legal {
+            display: flex;
+            gap: 1.5rem;
+            list-style: none;
+        }
+        .footer-legal a {
+            color: var(--text-on-dark-muted);
+            text-decoration: none;
+            font-size: 0.75rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        .footer-legal a:hover { color: var(--text-on-dark); }
+
+        /* ═══════════ RESPONSIVE ═══════════ */
+        @media (max-width: 768px) {
+            nav { padding: 1rem 1.5rem; }
+            .book-interview { padding: 3rem 1rem 2rem; }
+            .book-interview h1 { font-size: clamp(1.8rem, 8vw, 2.6rem); }
+            .check-icon { width: 60px; height: 60px; margin-bottom: 1.5rem; }
+            .check-icon svg { width: 26px; height: 26px; }
+            .calendly-container { border-radius: 12px; }
+            .calendly-inline-widget { height: 650px; }
+            footer { padding: 2rem 1.5rem; }
+            .footer-inner { flex-direction: column; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAV -->
+    <nav>
+        <a class="nav-brand" href="https://gtm.thekinn.co/"><img src="../kinn-logo-white.png" alt="The KINN" class="nav-logo"></a>
+    </nav>
+
+    <!-- BOOK INTERVIEW -->
+    <section class="book-interview">
+        <div class="book-interview-bg"></div>
+        <div class="book-interview-glow"></div>
+        <div class="book-interview-content">
+            <h1 class="rv"><span class="serif-italic">Next step:</span><br><span class="sans-bold">BOOK YOUR INTERVIEW</span></h1>
+            <p class="subtitle rv rv-d2">You're one step away. Book your interview below to complete your application.</p>
+
+            <div class="step-indicator rv rv-d3">
+                <span class="step-done">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                </span>
+                Application
+                <span class="step-arrow">&rarr;</span>
+                <span class="step-current">
+                    <span class="dot"></span>
+                    Book Interview
+                </span>
+            </div>
+        </div>
+
+        <!-- Calendly inline widget begin -->
+        <div class="calendly-container rv rv-d3">
+            <div class="calendly-inline-widget" data-url="https://calendly.com/d/ctn8-88h-98s/gtm-sprint-studio-course-interview?hide_gdpr_banner=1" style="min-width:320px;height:700px;"></div>
+            <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+        </div>
+        <!-- Calendly inline widget end -->
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-inner">
+            <span class="footer-copy">&copy; 2026 The KINN. All rights reserved.</span>
+            <ul class="footer-legal">
+                <li><a href="#">Privacy</a></li>
+                <li><a href="#">Terms</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll reveal
+        const ro = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    e.target.classList.add('vis');
+                    ro.unobserve(e.target);
+                }
+            });
+        }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+        document.querySelectorAll('.rv').forEach(el => ro.observe(el));
+    </script>
+</body>
+</html>
